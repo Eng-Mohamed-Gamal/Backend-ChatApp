@@ -19,7 +19,7 @@ export const updateUserSchema = {
     email: Joi.string().email(),
     oldPassword : Joi.string().min(7).max(25),
     newPassword : Joi.string().min(7).max(25),
-  }).with("email" , "password").with("oldPassword" , "newPassword"),
+  }).with("oldPassword" , "newPassword"),
 };
 export const getUsersSchema = {
   query: Joi.object({
