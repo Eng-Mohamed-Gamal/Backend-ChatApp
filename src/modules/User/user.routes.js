@@ -33,6 +33,5 @@ router.post(
 );
 
 router.get("/", auth(), validationMiddleware(getUsersSchema) ,expressAsyncHandler(UC.getAllUsers));
-router.delete("/", auth(), expressAsyncHandler(UC.deleteUser));
 
 export default router;

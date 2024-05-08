@@ -13,6 +13,7 @@ export const initiateApp = (app, express) => {
   app.use("/user", routers.userRouter);
   app.use("/message", routers.messageRouter);
   app.use("/chat", routers.chatRouter);
+  app.use("/admin", routers.adminRouter);
   app.use("*", (req, res) => {
     return res.status(404).json({
       messsage: "Not Found",

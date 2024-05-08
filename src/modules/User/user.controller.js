@@ -144,16 +144,4 @@ export const getAllUsers = async (req, res, next) => {
     .json({ message: "Fetch Users Done", count: users.length, users });
 };
 
-export const deleteUser = async (req, res, next) => {
-  const { _id: userId } = req.authUser;
-  const deletedUser = await User.findByIdAndDelete(userId);
-  if (!deletedUser) return next({ message: "Delete Fail"});
-  // delete from cloudinary
-  await cloudinaryConnection().api.delete_resources_by_prefix(
-    `${process.env.MAIN_FOLDER}/${process.env.SEC_FOLDER}/${deletedUser.folderId}`
-  );
-  await cloudinaryConnection().api.delete_folder(
-    `${process.env.MAIN_FOLDER}/${process.env.SEC_FOLDER}/${deletedUser.folderId}`
-  );
-  return res.status(200).json({ message: "Delete Done", deletedUser });
-};
+
